@@ -50,8 +50,8 @@ Desenvolver um sistema de controle de estoque para uma loja que vende produtos d
    - Criar um formulário HTML para entrada de dados.
    - Criar uma tabela no banco de dados de produtos com os campos necessários.
 4. Calcular o nível crítico de estoque:
-   - Verificar na tabela o tipo de produto e suas características específicas.
-   - Atualizar o estoque e verificar se está abaixo do nível crítico.
+   - Registrar manualmente os dados do produto, considerando as particularidades de cada categoria.
+   - Calcular o nível crítico de estoque com base nas características específicas de cada produto.
 5. Imprimir os dados do produto e o nível de estoque na tela, alertando se necessário.
 
 ## Tarefa 002 - Desenvolvimento de Sistema de Agendamento de Consultas Médicas
