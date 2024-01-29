@@ -32,22 +32,28 @@ Para se conectar a um banco de dados usando PDO, siga estes passos:
 ```php
 <?php
 $pdo = new PDO("pgsql:host=seu_host;port=sua_porta;dbname=seu_banco", "seu_usuario", "sua_senha");
+?>´´´
+
+### SQlite
+```php
+<?php
+$pdo = new PDO("sqlite:seuArquivoDeBancoDeDados.db");
 ?>
 
 ### MySQL
 ```php
 <?php
 $pdo = new PDO("mysql:host=seu_host;dbname=seu_banco", "seu_usuario", "sua_senha");
-?>
+?>´´´
 
 ### Oracle
 ```php
 <?php
 $pdo = new PDO("oci:host=seu_host;port=sua_porta;dbname=seu_sid", "seu_usuario", "sua_senha");
-?>
+?>´´´
 
 ### MS SQL Server
 ```php
 <?php
 $pdo = new PDO("sqlsrv:Server=seu_host;Database=seu_banco", "seu_usuario", "sua_senha");
-?>
+?>´´´
