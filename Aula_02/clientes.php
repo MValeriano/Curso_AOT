@@ -48,7 +48,7 @@
 
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);		
 	}
-	
+
 	function alteraCliente($db,$cod_cliente,$nome,$email,$telefone,$endereco){
 		$sql = "UPDATE clientes SET nome = :nome, email = :email, telefone = :telefone, endereco = :endereco WHERE cod_cliente = :cod_cliente";
 
@@ -84,6 +84,6 @@
 	//print_r(buscaTodosClientes($db));		
 	
 	//$resultadoBusca = buscaCliente($db,1);
-	//print_r($resultadoBusca);	
+	//print_r($resultadoBusca);
 ?>
 
