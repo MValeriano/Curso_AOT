@@ -81,7 +81,7 @@
 
 	//excluiCliente($db, 1);
 
-	print_r(buscaTodosClientes($db));		
+	//print_r(buscaTodosClientes($db));		
 	
 	//$resultadoBusca = buscaCliente($db,1);
 	//print_r($resultadoBusca);
