@@ -49,6 +49,18 @@
 		return $stmt->fetchAll(PDO::FETCH_ASSOC);		
 	}
 
+	function buscaClienteNome($db,$nome = null){
+		$sql = "SELECT * FROM clientes WHERE nome LIKE :nome";
+
+		$stmt = $db->prepare($sql);
+
+		$stmt->bindValue(":nome", $nome);
+		
+		$stmt->execute();
+
+		return $stmt->fetch(PDO::FETCH_ASSOC);		
+	}
+
 	function alteraCliente($db,$cod_cliente,$nome,$email,$telefone,$endereco){
 		$sql = "UPDATE clientes SET nome = :nome, email = :email, telefone = :telefone, endereco = :endereco WHERE cod_cliente = :cod_cliente";
 
@@ -73,15 +85,18 @@
 		$stmt->execute();
 	}
 	
-	//inserirDadosNaTabelaCliente($db, 21,"Maria","mariinha@gmail.com","3177777","rua das gaivotas,29");
+	//inserirDadosNaTabelaCliente($db, 3,"Pedro","pedro@gmail.com","3877777","rua marechal floriano,64");
+
+	//print_r(buscaClienteNome($db, 'Jose'));
 
 	//print_r(buscaTodosClientes($db));
 
 	//alteraCliente($db,1,"José das couves","ze@hotmail.com","215555555","rua dos ladrões,171");
 
+	
 	//excluiCliente($db, 1);
 
-	//print_r(buscaTodosClientes($db));		
+	//print_r(buscaTodosClientes($db));
 	
 	//$resultadoBusca = buscaCliente($db,1);
 	//print_r($resultadoBusca);
