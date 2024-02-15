@@ -11,7 +11,7 @@
 
 	// require ''; / require('');
 
-	include 'clientes.php';
+	include_once 'clientes.php';
 
 	$db = new PDO('sqlite:supertech.db');
 
@@ -51,7 +51,7 @@
 		return $resultados;
 	}
 
-	inserirPedido($db,5,'07/02/2024',2,'Maria');
+	//inserirPedido($db,5,'07/02/2024',2,'Maria');
 	
 	echo '<pre>';
 	print_r(buscarTodosPedidos($db));
@@ -60,8 +60,7 @@
 	//buscarTodosPedidos
 	//buscarPedido
 	//alterarPedido
-	//excluirPedido
-
+	//excluirPedido	
 
 
 ?>
