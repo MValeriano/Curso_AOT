@@ -1,3 +1,47 @@
+# Como os arrays funcionam no PHP
+O array é uma lista de valores agrupados sob um nome comum.
+```
+$lista = [];
+
+$lista = array();
+```
+
+Você pode definir um array de duas maneiras diferentes:
+```
+$lista = [1, 2];
+
+$lista = array(1, 2);
+```
+
+Arrays podem conter valores de qualquer tipo:
+```
+$lista = [1, 'test'];
+```
+E também outros arrays:
+```
+$lista = [1, [2, 'test']];
+```
+
+Você pode acessar os elementos de um array desta forma:
+```
+$lista = ['a', 'b'];
+$lista[0]; // 'a' - o índice começa em 0
+$lista[1]; // 'b'
+```
+Depois que um array é criado, você pode anexar valores a ele, assim:
+```
+$lista = ['a', 'b'];
+$lista[] = 'c';
+
+/*
+$lista == [
+  "a",
+  "b",
+  "c",
+]
+*/
+```
+
 # Manipulação de Arrays com PHP
 
 Uma coletânea de exemplos de uso de arrays e funções de manipulação de arrays em *PHP*. 
@@ -13,6 +57,8 @@ Uma coletânea de exemplos de uso de arrays e funções de manipulação de arra
 7. [Filtragem e Extração](#Filtragem-e-Extração)
 8. [Ordenação](#Ordenação)
 9. [Combinação e Divisão de Arrays](#Combinação-e-Divisão-de-Arrays)
+10. [Percorrendo Array Usando Laços](#Percorrendo-Array-Usando-Laços)
+11. [Percorrendo Array Multidimensional Usando Laços](#Percorrendo-Array-Multidimensional-Usando-Laços)
 
 ### Array Indexado
 
@@ -45,10 +91,24 @@ $a = [
 
 - **count():** Conta o número de elementos em um array.
 - **sizeof():** Alias para count().
+- **array_count_values():** Conta todas as ocorrências de cada valor distinto em um array.
+- **max():** Obtém o valor máximo contido no array.
+- **min():** Obtém o valor mínimo contido no array.
 - **array_push():** Adiciona um ou mais elementos no final de um array.
 - **array_pop():** Remove e retorna o último elemento de um array.
 - **array_shift():** Remove e retorna o primeiro elemento de um array.
 - **array_unshift():** Adiciona um ou mais elementos no início de um array.
+- **implode():** Transforma um array em uma string, unindo os elementos com um delimitador.
+- **array_rand():** Obtém um item aleatório do array.
+- **array_unique():** Remove valores duplicados de um array.
+- **array_product():** Calcula o produto dos valores de um array.
+- **array_pad():** Expande um array para um certo comprimento utilizando um determinado valor.
+- **array_sum():** Retorna a soma de todos os valores em um array.
+- **array_reverse():** Inverte a ordem dos elementos em um array.
+- **array_fill():** Preenche um array com um valor específico para um determinado intervalo de chaves.
+- **array_key_exists():** Verifica se uma chave existe em um array associativo.
+- **array_keys():** Retorna todas as chaves de um array.
+- **array_values():** Retorna todos os valores de um array.
 
 ## 2. Manipulação de Chaves e Valores:
 
@@ -72,10 +132,7 @@ $a = [
 - **array_map():** Aplica uma função a cada elemento de um array.
 - **array_slice():** Retorna uma parte de um array.
 - **array_splice():** Remove uma parte do array e a substitui por novos elementos.
-- **array_fill_keys():** Preenche um array com valores, especificando chaves.
-- **array_fill():** Preenche um array com valores.
-- **array_replace_recursive(): Substitui elementos de arrays passados no primeiro array recursivamente.
-- **array_replace():** Substitui elementos de arrays passados no primeiro array.
+- **array_walk():** Faz algo para cada item no array, podendo alterar valores no array existente.
 
 ## 5. Ordenação:
 
@@ -97,51 +154,95 @@ $a = [
 - **array_key_first():** Obtém a primeira chave de um array.
 - **array_key_last():** Obtém a última chave de um array.
 
+
 ### Manipulação Básica
 
 Esta seção aborda as funções básicas de manipulação de arrays em PHP, incluindo contagem, adição e remoção de elementos.
 
-- **count():** Conta o número de elementos em um array. É útil para determinar o tamanho de um array.
-  - Exemplo de uso:
-    ```php
-    $array = [1, 2, 3, 4, 5];
-    $tamanho = count($array); // $tamanho será igual a 5
-    ```
+- **count():** Conta o número de elementos em um array.
 
-- **sizeof():** Alias para count(). Ambos são usados para contar o número de elementos em um array.
-  - Exemplo de uso:
-    ```php
-    $array = [1, 2, 3, 4, 5];
-    $tamanho = sizeof($array); // $tamanho será igual a 5
-    ```
+```php
+$array = [1, 2, 3, 4, 5];
+$count = count($array); // $count será 5
+```
+- **sizeof():** Alias para count().
 
-- **array_push():** Adiciona um ou mais elementos no final de um array. É útil para adicionar novos elementos a um array existente.
-  - Exemplo de uso:
-    ```php
-    $array = [1, 2, 3];
-    array_push($array, 4, 5); // $array será [1, 2, 3, 4, 5]
-    ```
+```php
+$array = [1, 2, 3, 4, 5];
+$size = sizeof($array); // $size será 5
+```
+- **array_count_values():** Conta todas as ocorrências de cada valor distinto em um array.
 
-- **array_pop():** Remove e retorna o último elemento de um array. É útil para remover o último elemento de um array.
-  - Exemplo de uso:
-    ```php
-    $array = [1, 2, 3, 4, 5];
-    $ultimoElemento = array_pop($array); // $ultimoElemento será igual a 5 e $array será [1, 2, 3, 4]
-    ```
+```php
+$array = [1, 2, 2, 3, 3, 3];
+$countValues = array_count_values($array); // $countValues será [1 => 1, 2 => 2, 3 => 3]
+```
+- **max():** Obtém o valor máximo contido no array.
 
-- **array_shift():** Remove e retorna o primeiro elemento de um array. É útil para remover o primeiro elemento de um array.
-  - Exemplo de uso:
-    ```php
-    $array = [1, 2, 3, 4, 5];
-    $primeiroElemento = array_shift($array); // $primeiroElemento será igual a 1 e $array será [2, 3, 4, 5]
-    ```
+```php
+$array = [1, 7, 3, 9, 5];
+$maxValue = max($array); // $maxValue será 9
+```
+- **min():** Obtém o valor mínimo contido no array.
 
-- **array_unshift():** Adiciona um ou mais elementos no início de um array. É útil para adicionar novos elementos no início de um array existente.
-  - Exemplo de uso:
-    ```php
-    $array = [2, 3, 4, 5];
-    array_unshift($array, 1); // $array será [1, 2, 3, 4, 5]
-    ```
+```php
+$array = [1, 7, 3, 9, 5];
+$minValue = min($array); // $minValue será 1
+```
+- **array_push():** Adiciona um ou mais elementos no final de um array.
+
+```php
+$array = [1, 2, 3];
+array_push($array, 4, 5); // $array será [1, 2, 3, 4, 5]
+```
+- **array_pop():** Remove e retorna o último elemento de um array.
+
+```php
+$array = [1, 2, 3, 4, 5];
+$lastElement = array_pop($array); // $lastElement será 5, $array será [1, 2, 3, 4]
+```
+- **array_shift():** Remove e retorna o primeiro elemento de um array.
+
+```php
+$array = [1, 2, 3, 4, 5];
+$firstElement = array_shift($array); // $firstElement será 1, $array será [2, 3, 4, 5]
+```
+- **array_unshift():** Adiciona um ou mais elementos no início de um array.
+
+```php
+$array = [2, 3, 4, 5];
+array_unshift($array, 1); // $array será [1, 2, 3, 4, 5]
+```
+- **implode():** Transforma um array em uma string, unindo os elementos com um delimitador.
+
+```php
+$array = ["Hello", "World"];
+$resultString = implode(" ", $array); // $resultString será "Hello World"
+```
+- **array_rand():** Obtém um item aleatório do array.
+
+```php
+$array = ["apple", "orange", "banana", "grape"];
+$randomKey = array_rand($array); // $randomKey será uma chave aleatória do array
+```
+- **array_unique():** Remove valores duplicados de um array.
+
+```php
+$array = [1, 2, 2, 3, 4, 4, 5];
+$uniqueArray = array_unique($array); // $uniqueArray será [1, 2, 3, 4, 5]
+```
+- **array_product():** Calcula o produto dos valores de um array.
+
+```php
+$array = [2, 3, 4];
+$product = array_product($array); // $product será 24
+```
+- **array_pad():** Expande um array para um certo comprimento utilizando um determinado valor.
+
+```php
+$array = [1, 2, 3];
+$paddedArray = array_pad($array, 5, 0); // $paddedArray será [1, 2, 3, 0, 0]
+```
 
 ### Manipulação de Chaves e Valores
 
@@ -235,7 +336,14 @@ Nesta seção, exploraremos funções que permitem filtrar elementos de um array
     $array = [1, 2, 3, 4, 5];
     array_splice($array, 2, 2, [6, 7]); // $array será [1, 2, 6, 7, 5]
     ```
-
+- **array_walk():** Faz algo para cada item no array, podendo alterar valores no array existente.
+	- Exemplo de uso:
+	```php
+	$names = array("Alice", "Bob", "Charlie");
+	array_walk($names, function (&$name) {
+	$name = strtoupper($name);
+	}); // Agora $names contém ["ALICE", "BOB", "CHARLIE"]
+	 ```
 ### Ordenação
 
 Nesta seção, abordaremos funções para ordenar arrays em PHP, seja em ordem crescente, decrescente ou com base nas chaves.
@@ -316,4 +424,122 @@ Nesta seção, exploraremos funções que permitem combinar e dividir arrays em 
     $array1 = [1, 2, 3, 4, 5];
     $array2 = [3, 4, 5, 6, 7];
     $intersecao = array_intersect($array1, $array2); // $intersecao será [3, 4, 5]
+    ```
+
+## Percorrendo Array Usando Laços
+
+### 1. Usando while para Percorrer um Array
+  - Exemplo de uso:
+    ```php
+	$meuArray = [1, 2, 3, 4, 5];
+	$contador = 0;
+
+	while ($contador < count($meuArray)) {
+    		echo $meuArray[$contador] . ' ';
+    		$contador++;
+	}
+    ```
+### 2. Usando do-while para Percorrer um Array
+  - Exemplo de uso:
+    ```php
+	$meuArray = [1, 2, 3, 4, 5];
+	$contador = 0;
+
+	while ($contador < count($meuArray)) {
+    		echo $meuArray[$contador] . ' ';
+    		$contador++;
+	}
+    ```
+### 3. Usando for para Percorrer um Array
+  - Exemplo de uso:
+    ```php
+	$meuArray = ['a', 'b', 'c', 'd', 'e'];
+
+	$contador = 0;
+	do {
+	    echo $meuArray[$contador] . ' ';
+	    $contador++;
+	} while ($contador < count($meuArray));
+    ```
+### 4. Usando foreach para Percorrer um Array
+  - Exemplo de uso:
+    ```php
+	$meuArray = ['apple', 'banana', 'cherry', 'date'];
+
+	foreach ($meuArray as $fruta) {
+    		echo $fruta . ' ';
+	}
+    ```
+## Percorrendo Array Multidimensional Usando Laços
+### 1. Usando while para Percorrer um Array Multidimensional
+  - Exemplo de uso:
+    ```php
+	$matriz = [
+	    [1, 2, 3],
+	    [4, 5, 6],
+	    [7, 8, 9]
+	];
+
+	$linha = 0;
+	while ($linha < count($matriz)) {
+	    $coluna = 0;
+	    while ($coluna < count($matriz[$linha])) {
+	        echo $matriz[$linha][$coluna] . ' ';
+	        $coluna++;
+	    }
+	    echo "\n"; // Pula para a próxima linha após cada linha da matriz
+	    $linha++;
+	}
+    ```
+### 2. Usando do-while para Percorrer um Array Multidimensional
+  - Exemplo de uso:
+    ```php
+	$matriz = [
+	    [1, 2, 3],
+	    [4, 5, 6],
+	    [7, 8, 9]
+	];
+
+	$linha = 0;
+	do {
+	    $coluna = 0;
+	    do {
+	        echo $matriz[$linha][$coluna] . ' ';
+	        $coluna++;
+	    } while ($coluna < count($matriz[$linha]));
+	    echo "\n"; // Pula para a próxima linha após cada linha da matriz
+	    $linha++;
+	} while ($linha < count($matriz));
+    ```
+### 3. Usando for para Percorrer um Array Multidimensional
+  - Exemplo de uso:
+    ```php
+	$matriz = [
+	    [1, 2, 3],
+	    [4, 5, 6],
+	    [7, 8, 9]
+	];
+
+	for ($linha = 0; $linha < count($matriz); $linha++) {
+	    for ($coluna = 0; $coluna < count($matriz[$linha]); $coluna++) {
+	        echo $matriz[$linha][$coluna] . ' ';
+	    }
+	    echo "\n"; // Pula para a próxima linha após cada linha da matriz
+	}
+    ```
+### 4. Usando foreach para Percorrer um Array Multidimensional
+  - Exemplo de uso:
+    ```php
+	$matriz = [
+	    [1, 2, 3],
+	    [4, 5, 6],
+	    [7, 8, 9]
+	];
+
+	foreach ($matriz as $linha) {
+	    foreach ($linha as $valor) {
+	        echo $valor . ' ';
+	    }
+	    echo "\n"; // Pula para a próxima linha após cada linha da matriz
+	}
     ```

@@ -79,14 +79,169 @@
 	print_r($cores);
 	echo "<br/>";
 	
+	echo "<hr/>";
+
+	echo "<br/>";
 
 	// Metodos de manipulação de Arrays 
 
-	print_r( 'o count deu : ' . count($frutas) );
+	echo "Manipulação Básica";
+	
+	echo "<br/>";
+	echo "count : ".count($pessoa);
+	echo "<br/>";
+	echo "sizeof : ".sizeof($pessoa);
 	echo "<br/>";
 
-	print_r( 'o sizeof deu : ' . sizeof($frutas) );
+//	$arrayTeste = array( 1, 2, 3, 4, 5 );
+	$arrayTeste = [1, 2, 3, 4, 5];
+	
+	print_r($arrayTeste);
+	echo "<br/>";
+	$arrayTeste[] = 6;
+
+	print_r($arrayTeste);
+	echo "<br/>";
+
+	array_push($arrayTeste,7,"outro valor");
+
+	print_r($arrayTeste);
+	echo "<br/>";
+
+	array_unshift($arrayTeste,-1,"primeiro valor");
+
+	print_r($arrayTeste);
+	echo "<br/>";
+
+	array_pop($arrayTeste);
+
+	print_r($arrayTeste);
+	echo "<br/>";
+
+	array_pop($arrayTeste);
+
+	print_r($arrayTeste);
 	echo "<br/>";
 	
+	array_shift($arrayTeste);
+
+	print_r($arrayTeste);
+	echo "<br/>";
+
+	array_shift($arrayTeste);
+
+	print_r($arrayTeste);
+	echo "<br/>";
+
+	
+	echo "<pre>";
+	print_r( array_keys($pessoa) );
+	echo "</pre>";
+	echo "<br/>";
+	
+	echo "<pre>";
+	print_r( array_values($pessoa) );
+	echo "</pre>";
+	echo "<br/>";
+	
+	$arrayInvertido = array_reverse($arrayTeste);
+
+	print_r($arrayTeste);
+	echo "<br/>";
+	print_r($arrayInvertido);
+	echo "<br/>";
+
+	echo "Buscas e verificações";
+	echo "<br/>";
+
+	$existe = in_array(3, $arrayTeste);
+	
+	if($existe)
+	{
+		echo "Existe o número no array";
+	}
+	else
+	{
+		echo "Não existe o número no array";
+	}
+
+	echo "<br/>";
+
+	$existe = array_search("João", $pessoa);
+
+	echo $existe;
+
+	echo '<br/>';
+
+	if($existe)
+	{
+		echo "Existe o valor no array";
+	}
+	else
+	{
+		echo "Não existe o valor no array";
+	}	
+
+	echo "<br/>";
+
+	$existe = array_key_exists("nome", $pessoa);
+
+	echo $existe;
+
+	echo '<br/>';
+
+	if($existe)
+	{
+		echo "Existe a chave no array";
+	}
+	else
+	{
+		echo "Não existe a chave no array";
+	}
+
+	echo "<br/>";
+
+	echo "Ordenação";
+
+	
+	$testeOrdenacao = [5,19,2,126,980,4,0,32];
+
+	print_r($testeOrdenacao);
+	echo '<br/>';
+
+	sort($testeOrdenacao);
+
+	print_r($testeOrdenacao);
+	echo '<br/>';
+
+	rsort($testeOrdenacao);
+
+	print_r($testeOrdenacao);
+	echo '<br/>';
+
+	asort($pessoa);
+	echo "<pre>";
+	print_r( $pessoa );
+	echo "</pre>";
+	echo "<br/>";
+
+	arsort($pessoa);
+	echo "<pre>";
+	print_r( $pessoa );
+	echo "</pre>";
+	echo "<br/>";
+
+	ksort($pessoa);
+	echo "<pre>";
+	print_r( $pessoa );
+	echo "</pre>";
+	echo "<br/>";
+
+	krsort($pessoa);
+	echo "<pre>";
+	print_r( $pessoa );
+	echo "</pre>";
+	echo "<br/>";
+
 
 ?>
