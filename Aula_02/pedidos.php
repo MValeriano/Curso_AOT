@@ -25,7 +25,7 @@
 	function inserirPedido($db,$cod_pedido,$data_pedido,$status,$nomeCliente ){
 
 		$arrayClientes = buscaClienteNome($db, $nomeCliente);
-		$codigoCliente = $arrayClientes['cod_cliente'];
+		$cod_cliente = $arrayClientes['cod_cliente'];
 
 		$sql = "INSERT INTO pedidos (cod_pedido,data_pedido,cod_cliente,status) values (:cod_pedido,:data_pedido,:cod_cliente,:status)";
 	
@@ -33,7 +33,7 @@
 
 		$stmt->bindValue(":cod_pedido", $cod_pedido);
 		$stmt->bindValue(":data_pedido", $data_pedido);
-		$stmt->bindValue(":cod_cliente", $codigoCliente);
+		$stmt->bindValue(":cod_cliente", $cod_cliente);
 		$stmt->bindValue(":status", $status);
 
 		$stmt->execute();		
@@ -51,16 +51,54 @@
 		return $resultados;
 	}
 
+	
+	function buscarPedido($db, $cod_pedido){
+		$sql = "SELECT * FROM pedidos WHERE cod_pedido = :cod_pedido";
+		
+		$stmt = $db->prepare($sql);
+
+		$stmt->bindValue(":cod_pedido",$cod_pedido);
+
+		$stmt->execute();
+
+		return $stmt->fetch(PDO::FETCH_ASSOC);
+	}
+	
+	function alterarPedido($db,$cod_pedido,$data_pedido,$status,$nomeCliente ){
+
+		$arrayClientes = buscaClienteNome($db, $nomeCliente);
+		$cod_cliente = $arrayClientes['cod_cliente'];
+
+		$sql = "UPDATE pedidos SET data_pedido = :data_pedido, cod_cliente = :cod_cliente, status = :status WHERE cod_pedido = :cod_pedido ";
+	
+		$stmt = $db->prepare($sql);
+
+		$stmt->bindValue(":cod_pedido", $cod_pedido);
+		$stmt->bindValue(":data_pedido", $data_pedido);
+		$stmt->bindValue(":cod_cliente", $cod_cliente);
+		$stmt->bindValue(":status", $status);
+
+		$stmt->execute();
+
+	}
+	
+	function excluirPedido($db, $cod_pedido){
+		$sql = "DELETE FROM pedidos WHERE cod_pedido = :cod_pedido";
+
+		$stmt = $db->prepare($sql);
+
+		$stmt->bindValue(":cod_pedido", $cod_pedido);
+
+		$stmt->execute();	
+	}
+
 	//inserirPedido($db,5,'07/02/2024',2,'Maria');
+	//alterarPedido($db,5,'01/01/2023',1,'Beatriz');
+	//excluirPedido($db,10);
 	
 	echo '<pre>';
-	print_r(buscarTodosPedidos($db));
+	//print_r(buscarTodosPedidos($db));
+	//print_r(buscarPedido($db, 3));
+	//print_r(buscaTodosClientes($db));
 	echo '</pre>';
-
-	//buscarTodosPedidos
-	//buscarPedido
-	//alterarPedido
-	//excluirPedido	
-
-
 ?>

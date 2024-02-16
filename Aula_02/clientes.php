@@ -101,7 +101,8 @@
 		}
 	}
 	
-	print_r($_SERVER);
+	//print_r($_SERVER);
+
 	// Verifica o método da requisição (GET, POST, PUT, DELETE)
 	switch ($_SERVER["REQUEST_METHOD"]) {
 	    case "DELETE":
@@ -120,12 +121,16 @@
 	        // Exibe os dados recebidos, aqui você irá substituir pelo método para inserir os dados
 		// olhando o método delete tente retornar se foi inserido com sucesso
 	        print_r($dados);
+		//inserirDadosNaTabelaCliente($db, 3,"Pedro","pedro@gmail.com","3877777","rua marechal floriano,64");
 	        break;
 	    case "GET":
 	        // Se for uma requisição GET
 	        // Chama a função para buscar todos os clientes
 		// como exercício retire o print_r mas faça com que os dados sejam visualizados.
+		// buscar a função de acordo com o que vier de pedido ( busca pelo nome, id, buscar todos)
 	        print_r(buscaTodosClientes($db));
+		//print_r(buscaClienteNome($db, 'Jose'));
+		//print_r(buscaCliente($db,1));
 	        break;
 	    case "PUT":
 	        // Se for uma requisição PUT
@@ -135,26 +140,12 @@
 	        $dados = json_decode($corpoRequisicao, true);
 	        // Exibe os dados recebidos, aqui você irá substituir pelo método para alterar os dados
 		// olhando o método delete tente retornar se foi inserido com sucesso
+		//alteraCliente($db,1,"José das couves","ze@hotmail.com","215555555","rua dos ladrões,171");
 	        print_r($dados);
 	        break;
 	    default:
 	        // Se o método não for reconhecido
 	        echo "Não entendi o que você quer.";
 	}
-
-	//inserirDadosNaTabelaCliente($db, 3,"Pedro","pedro@gmail.com","3877777","rua marechal floriano,64");
-
-	//print_r(buscaClienteNome($db, 'Jose'));
-
-	//print_r(buscaTodosClientes($db));
-
-	//alteraCliente($db,1,"José das couves","ze@hotmail.com","215555555","rua dos ladrões,171");
-	
-	//excluiCliente($db, 1);
-
-	//print_r(buscaTodosClientes($db));
-	
-	//$resultadoBusca = buscaCliente($db,1);
-	//print_r($resultadoBusca);
 ?>
 

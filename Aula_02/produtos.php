@@ -1,13 +1,13 @@
 <?php
 
-// conexão com o banco de dados 
+	// conexão com o banco de dados 
 	$bd = new PDO('sqlite:supertech.db');
 
-// Fazer nossa interação interface de frontend com nosso banco de dados 
+	// Fazer nossa interação interface de frontend com nosso banco de dados 
 
 	/// CRUD
 
-//insereProduto
+	//insereProduto
 	function insereProduto($bd, $cod_produto, $nome, $descricao, $preco ,$quantidade, $fornecedor){
 
 		$sql = "INSERT INTO produtos (cod_produto, nome, descricao, preco, quantidade,fornecedor) values (:cod_produto, :nome, :descricao, :preco, :quantidade,:fornecedor)";
@@ -65,6 +65,18 @@
 		
 	}
 
+	function buscaProdutoNome($db,$nome){
+		$sql = "SELECT * FROM produtos WHERE nome LIKE :nome";
+
+		$stmt = $db->prepare($sql);
+
+		$stmt->bindValue(":nome", $nome);
+		
+		$stmt->execute();
+
+		return $stmt->fetch(PDO::FETCH_ASSOC);		
+	}
+
 	function excluirProduto($bd, $cod_produto){
 		$sql = "DELETE FROM produtos WHERE cod_produto = :cod_produto";
 
@@ -77,7 +89,7 @@
 	}
 
 	
-	//insereProduto($bd, 2, "TV 42 polegadas", "Televisão de LED 42 polegadas com wifi e bluetooth",1850.47,2985,"samsung");	
+	//insereProduto($bd, 3, "Forno Microondas", "Forno Microondas Eletrolux 1400W",450.47,2385,"eletrolux");	
 
 	//alterarProduto($bd, 2, "TV 32 polegadas", "Televisão de LED 32 polegadas com wifi e bluetooth",850.47,985,"samsung");	
 
@@ -89,4 +101,11 @@
 	
 	//print_r(retornaTodosProdutos($bd));
 
+	//echo "<hr />";
+
+	//$produtos = buscaProdutoNome($bd,"Forno Microondas");
+	//print_r($produtos);
+
 	//echo "</pre>";
+
+?>
