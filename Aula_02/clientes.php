@@ -4,7 +4,7 @@
 	// êêêêêêêêêêêêêêêêêêêêê nossa primeira API
 
 	$db = new PDO("sqlite:supertech.db");
-	
+
 	function inserirDadosNaTabelaCliente($db,$cod_cliente,$nome,$email,$telefone,$endereco)
 	{
 	// Insert 
@@ -101,6 +101,7 @@
 		}
 	}
 	
+	
 	//print_r($_SERVER);
 
 	// Verifica o método da requisição (GET, POST, PUT, DELETE)
@@ -127,8 +128,10 @@
 	        // Se for uma requisição GET
 	        // Chama a função para buscar todos os clientes
 		// como exercício retire o print_r mas faça com que os dados sejam visualizados.
-		// buscar a função de acordo com o que vier de pedido ( busca pelo nome, id, buscar todos)
+		// buscar a função de acordo com o que vier de pedido ( busca pelo nome, id, buscar todos)	
+		echo '<pre>';
 	        print_r(buscaTodosClientes($db));
+		echo '</pre>';
 		//print_r(buscaClienteNome($db, 'Jose'));
 		//print_r(buscaCliente($db,1));
 	        break;

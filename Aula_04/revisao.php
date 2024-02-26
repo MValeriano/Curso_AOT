@@ -192,9 +192,10 @@
 	// Função pode ou não ter argumentos;
 	// function identificador(){ código }
  	// function identificador(){ código; return retorna um valor }
-        // function identificador( parametro ){ código }
+    // function identificador( parametro ){ código }
  	// function identificador( parametro ){ código; return retorna um valor }
 	
+	 /*
 	function somaNumeros( $num1, $num2) 
 	{
 		return $num1 + $num2;
@@ -218,8 +219,31 @@
 	}
 
 	subtraiNumeros(10,5);
+	*/
 
+	/* Itens importantes que não passamos mas que precisamos saber, 
+	como exercício pesquisem cada tema.
+		
+	1. Trabalhando com Strings:
 
-	
+	- Concatenação de strings.
+	- Funções de manipulação de strings (ex: strlen, substr, str_replace).
 
+	2. Arrays Associativos:
+
+	- Declaração e manipulação de arrays associativos.
+	- Iteração sobre arrays associativos.
+
+	3. Manipulação de Data e Hora:
+
+	- Utilização das funções date e strtotime.
+
+	4. Manipulação de Arquivos:
+
+	- Leitura e escrita de arquivos.
+
+	5. Validação de Formulários:
+
+	- Validação de dados de formulários.	
+	*/
 ?>
