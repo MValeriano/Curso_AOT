@@ -1,4 +1,8 @@
 <?php 
+	// usem a saída 
+	// var_dump(); 
+	// para imprimir os resultados
+
 	// Operadores aritméticos
 	// Exercício 1 :
 	// Dados dois números $a = 10 e $b = 20. Calcule a soma, a subtração, a multiplicação e a 	divisão.
@@ -8,7 +12,7 @@
 
 	// Operadores de atribuição
 	// Exercício 3: 
-	// Dado um número $y = 30. Use operadores de atribuiição para adicionar 10, subtrair 5, multiplicar por 2 e dividir por 3.
+	// Dado um número $y = 30. Use operadores de atribuição para adicionar 10, subtrair 5, multiplicar por 2 e dividir por 3.
 
 	// Exercício 4:
 	// Dado um número $z = 50. Use o operador de aribuição para concatenar a string "50".
