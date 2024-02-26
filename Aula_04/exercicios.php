@@ -30,5 +30,8 @@
 	// Exercício 8:
 	// Dado um valor booleano $boll4 = false. verifique a negação ( ! ou not ) de $bool4.
  
+	//Exercícios para revisão
+
+	
 	
 ?>
